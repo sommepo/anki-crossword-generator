@@ -236,7 +236,7 @@ class MainDialog(QWidget):
         # space to the preview table before the window has been resized once.
         # Both profiles must always show their checkbox and Preview button.
         # The table below is deliberately allowed to shrink before this panel.
-        box.setFixedHeight(260)
+        box.setFixedHeight(300 if not japanese else 260)
         box.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
         form = _form_layout(box)
 
@@ -312,6 +312,13 @@ class MainDialog(QWidget):
                 self._on_native_max_words_changed,
             )
             form.addRow("Maximum answer words", self.na_max_words)
+            prepare_answers = QPushButton("Fill englishWord field from JMdict…")
+            prepare_answers.setToolTip(
+                "Look up Japanese words in the optional, locally stored JMdict "
+                "data and fill blank englishWord fields."
+            )
+            qconnect(prepare_answers.clicked, self._open_jmdict_backfill)
+            form.addRow("", prepare_answers)
 
         preview = QPushButton(
             "Preview Native → Japanese" if japanese else "Preview Japanese → Native"
@@ -340,6 +347,35 @@ class MainDialog(QWidget):
             self.na_hide = hide
             self.preview_native_btn = preview
         return box
+
+    def _open_jmdict_backfill(self) -> None:
+        """Open the optional JMdict-backed Native answer-field backfill."""
+        if not self.deck.currentData():
+            tooltip("Choose a deck first.")
+            return
+        from .jmdict_backfill import JmdictBackfillDialog
+
+        helper = getattr(self, "_jmdict_backfill", None)
+        if helper is not None:
+            try:
+                if helper.isVisible():
+                    helper.raise_()
+                    helper.activateWindow()
+                    return
+            except RuntimeError:
+                pass
+        self._sync_shared_from_widgets()
+        helper = JmdictBackfillDialog(
+            self.session,
+            self,
+            word="wordDictionaryForm",
+            reading=self.ja_answer.currentText(),
+            target="englishWord",
+        )
+        helper.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
+        helper.destroyed.connect(lambda *_args: setattr(self, "_jmdict_backfill", None))
+        self._jmdict_backfill = helper
+        helper.show()
 
     def _build_state_box(self) -> QGroupBox:
         state_box = QGroupBox("Card states")
