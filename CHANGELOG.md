@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0
+
+- Added optional JMdict-backed `englishWord` field backfill for Japanese → Native crosswords.
+- Added the live AnkiWeb listing and refreshed the configuration screenshot.
+
 ## 0.5.0
 
 - Added PNG and SVG export from PDF preview.
