@@ -1,0 +1,20 @@
+[project]
+name = "anki-jp-crossword-generator"
+version = "0.5.0"
+description = "Anki add-on that generates Japanese vocabulary crossword puzzles from your collection."
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.9"
+authors = [{ name = "anki-jp-crossword-generator contributors" }]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
