@@ -8,7 +8,7 @@ The add-on is built around printing, with a one-page A4 PDF and matching answer 
 
 Choose a deck, choose a direction, select answer and clue fields, preview the eligible cards, then generate a puzzle. Solve it in Anki, or open PDF preview to print or export it.
 
-<!-- SCREENSHOT 1: Main configuration window. Show the deck selector, the two direction panels, preview, and output selector. -->
+![1. Main configuration window](docs/screenshots/01-configuration.png)
 
 ## Installing
 
@@ -30,9 +30,9 @@ Use Native → Japanese when the answer should be Japanese, usually a reading fi
 
 A typical setup uses `Reading` as the answer field and an English meaning or sentence as the clue. Japanese answers are placed one written character per square, so small kana and long-vowel marks remain separate cells: `きょう` becomes `き / ょ / う`, and `スーパー` becomes `ス / ー / パ / ー`.
 
-<!-- SCREENSHOT 2: Native → Japanese puzzle in Anki. Use a puzzle with English sentence clues and kana answers. -->
+![2. Native to Japanese puzzle in Anki](docs/screenshots/02-native-to-japanese-anki.png)
 
-<!-- SCREENSHOT 3: The same Native → Japanese puzzle in PDF preview. -->
+![3. Native to Japanese PDF preview](docs/screenshots/03-native-to-japanese-pdf.png)
 
 ## Japanese → Native
 
@@ -42,9 +42,9 @@ Japanese → Native uses one alphabetic letter or digit per square. It suits lan
 
 Use Maximum answer words to limit answers to one, two, or three words. Select `1 word` for a conventional single-word crossword; choose `None` to allow phrases.
 
-<!-- SCREENSHOT 4: Japanese → Native puzzle in Anki. Use Japanese clues and English word answers. -->
+![4. Japanese to Native puzzle in Anki](docs/screenshots/04-japanese-to-native-anki.png)
 
-<!-- SCREENSHOT 5: The same Japanese → Native puzzle in PDF preview. -->
+![5. Japanese to Native PDF preview](docs/screenshots/05-japanese-to-native-pdf.png)
 
 ## Choosing cards
 
@@ -57,8 +57,6 @@ Choose which card states to include, then select cards at random, in listed orde
 Choose a clue field or combine several fields with the clue template builder. For example, `{{Meaning}}` uses one field, while `{{Meaning}}` followed by `{{English sentence}}` combines a definition with an example sentence.
 
 Fill-in-the-gap clues replace a matching answer in a sentence with a blank. Formatting from the original Anki field is retained, including bold and highlighted words. In Anki, choose how marked words appear; PDF clues use bold and underlining.
-
-<!-- SCREENSHOT 6: Clue formatting and fill-in-the-gap example. Show bold or highlighted text in the clue list. -->
 
 ## Preview and generating
 
@@ -78,8 +76,6 @@ Choose PDF preview before generating to inspect the printable puzzle before savi
 
 Save the current puzzle or answer key as PDF, PNG, or SVG. Print opens the normal system print dialog for the current preview.
 
-<!-- SCREENSHOT 7: PDF preview controls. Show Puzzle / Answer key, Save PDF, Save PNG, Save SVG, and Print. -->
-
 ## Completed puzzles
 
 After finishing a puzzle, choose Mark puzzle solved. The add-on tags every note used in the completed grid with a dated tag such as `anki_crossword::solved::2026-08-20`.
@@ -91,8 +87,6 @@ Solved notes are excluded from future puzzles by default. Enable Solved crosswor
 Every generated puzzle is saved as a self-contained snapshot in the current Anki profile. Open History from the main window to reopen an earlier puzzle in Anki or PDF preview, or remove it from the list.
 
 History keeps the latest 100 puzzles. Saved puzzles do not change when their source cards are later edited.
-
-<!-- SCREENSHOT 8: Puzzle history window with several saved puzzles. -->
 
 ## Known issues and limitations
 
