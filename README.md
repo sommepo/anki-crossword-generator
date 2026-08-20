@@ -8,15 +8,15 @@ The add-on is built around printing, with a one-page A4 PDF and matching answer 
 
 Choose a deck, choose a direction, select answer and clue fields, preview the eligible cards, then generate a puzzle. Solve it in Anki, or open PDF preview to print or export it.
 
+For Japanese → Native crosswords, the optional JMdict backfill can create clean `englishWord` values from Japanese words when your notes do not already have them.
+
 ![1. Main configuration window](docs/screenshots/01-configuration.png)
 
 ## Installing
 
-Install Anki Crossword Generator from [AnkiWeb](https://ankiweb.net/shared/info/ADDON_ID), or download the latest `.ankiaddon` file from this repository’s GitHub Releases page and open it with Anki.
+Install Anki Crossword Generator from [AnkiWeb](https://ankiweb.net/shared/info/1808642161), or download the latest `.ankiaddon` file from this repository’s GitHub Releases page and open it with Anki.
 
 Restart Anki, then open Tools → Anki Crossword Generator.
-
-`ADDON_ID` will be replaced with the add-on’s AnkiWeb number before release.
 
 ## Getting started
 
@@ -41,6 +41,8 @@ Use Japanese → Native when the answer should be a native-language word and the
 Japanese → Native uses one alphabetic letter or digit per square. It suits languages with conventional letter-based crossword answers, including English, Spanish, French, and German. Spaces and punctuation are removed from the grid, so `mother-in-law` becomes `MOTHERINLAW`.
 
 Use Maximum answer words to limit answers to one, two, or three words. Select `1 word` for a conventional single-word crossword; choose `None` to allow phrases.
+
+If your cards do not already have a clean `englishWord` field, use **Fill englishWord field from JMdict…**. It downloads the optional English [jmdict-simplified](https://github.com/scriptin/jmdict-simplified) data once, keeps it locally, and fills blank `englishWord` values with dictionary glosses. The crossword itself never needs an internet connection.
 
 ![4. Japanese to Native puzzle in Anki](docs/screenshots/04-japanese-to-native-anki.png)
 
@@ -95,6 +97,8 @@ Not every selected word will necessarily appear in a generated puzzle. The gener
 On some systems, Anki’s Browse window may open behind other add-on windows. It remains available through the taskbar or window switcher.
 
 Japanese → Native is intended for alphabetic, letter-per-cell crossword answers. It is not suitable for Chinese, Korean, Arabic, or other scripts that need different cell rules.
+
+The optional JMdict backfill creates English `englishWord` values only; it does not provide dictionary backfill for other native languages.
 
 ## Development
 
