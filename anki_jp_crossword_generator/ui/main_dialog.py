@@ -304,10 +304,10 @@ class MainDialog(QWidget):
                 self._on_native_max_words_changed,
             )
             form.addRow("Maximum answer words", self.na_max_words)
-            prepare_answers = QPushButton("Fill englishWord field from JMdict…")
+            prepare_answers = QPushButton("Backfill Native answers from JMdict…")
             prepare_answers.setToolTip(
                 "Look up Japanese words in the optional, locally stored JMdict "
-                "data and fill blank englishWord fields."
+                "data and fill blank values in the selected Native answer field."
             )
             qconnect(prepare_answers.clicked, self._open_jmdict_backfill)
             form.addRow("", prepare_answers)
@@ -360,7 +360,7 @@ class MainDialog(QWidget):
             self,
             word="wordDictionaryForm",
             reading=self.ja_answer.currentText(),
-            target="englishWord",
+            target=self.na_answer.currentText().strip() or "englishWord",
         )
         helper.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
         helper.destroyed.connect(lambda *_args: setattr(self, "_jmdict_backfill", None))

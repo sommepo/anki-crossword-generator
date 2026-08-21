@@ -8,7 +8,7 @@ The add-on is built around printing, with a one-page A4 PDF and matching answer 
 
 Choose a deck, choose a direction, select answer and clue fields, preview the eligible cards, then generate a puzzle. Solve it in Anki, or open PDF preview to print or export it.
 
-For Japanese → Native crosswords, an optional JMdict backfill can create clean `englishWord` values from Japanese words when your notes do not already have them. For this to work, you must create the `englishWord` field on the given note type.
+For Japanese → Native crosswords, an optional JMdict backfill can create clean Native answer values from Japanese words when your notes do not already have them.
 
 ![1. Main configuration window](docs/screenshots/01-configuration.png)
 
@@ -42,7 +42,7 @@ Japanese → Native uses one alphabetic letter or digit per square. It suits lan
 
 Use Maximum answer words to limit answers to one, two, or three words. Select `1 word` for a conventional single-word crossword; choose `None` to allow phrases.
 
-If your cards do not already have a clean `englishWord` field, use **Fill englishWord field from JMdict…**. It downloads the optional English [jmdict-simplified](https://github.com/scriptin/jmdict-simplified) data once, keeps it locally, and fills blank `englishWord` values with dictionary glosses. The crossword itself never needs an internet connection.
+If your cards do not already have a clean Native answer field, use **Backfill Native answers from JMdict…**. It downloads the optional English [jmdict-simplified](https://github.com/scriptin/jmdict-simplified) data once, keeps it locally, and fills blank values in the currently selected Native answer field with dictionary glosses. The crossword itself never needs an internet connection.
 
 ![4. Japanese to Native puzzle in Anki](docs/screenshots/04-japanese-to-native-anki.png)
 
