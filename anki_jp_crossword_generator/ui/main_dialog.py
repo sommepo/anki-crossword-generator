@@ -288,14 +288,6 @@ class MainDialog(QWidget):
         builder_row.addWidget(picker, 0)
         form.addRow("Clue template builder", builder)
 
-        hide = QCheckBox("Fill-in-the-gap clues")
-        hide.setToolTip(
-            "Blank the crossword answer (and close variants) inside the clue, "
-            "so example sentences become fill-in-the-gap prompts."
-        )
-        qconnect(hide.toggled, lambda checked, lang=language: self._on_hide_toggled(lang, checked))
-        form.addRow("", hide)
-
         if not japanese:
             self.na_max_words = QComboBox()
             self.na_max_words.addItem("None", 0)
@@ -337,14 +329,12 @@ class MainDialog(QWidget):
             self.ja_clue = clue
             self.ja_template = template
             self.ja_field_picker = picker
-            self.ja_hide = hide
             self.preview_japanese_btn = preview
         else:
             self.na_answer = answer
             self.na_clue = clue
             self.na_template = template
             self.na_field_picker = picker
-            self.na_hide = hide
             self.preview_native_btn = preview
         return box
 
@@ -556,13 +546,11 @@ class MainDialog(QWidget):
         self.ja_template.blockSignals(True)
         self.ja_template.setText(settings.japanese_clue_template)
         self.ja_template.blockSignals(False)
-        self._set_checkbox(self.ja_hide, settings.japanese_hide_target)
         self._set_combo_text(self.na_answer, settings.native_answer_field)
         self._set_combo_text(self.na_clue, settings.native_clue_field)
         self.na_template.blockSignals(True)
         self.na_template.setText(settings.native_clue_template)
         self.na_template.blockSignals(False)
-        self._set_checkbox(self.na_hide, settings.native_hide_target)
         max_index = self.na_max_words.findData(settings.native_max_answer_words)
         self.na_max_words.blockSignals(True)
         self.na_max_words.setCurrentIndex(max_index if max_index >= 0 else 0)
@@ -618,11 +606,11 @@ class MainDialog(QWidget):
         self.session.set_profile_answer_field("japanese", self.ja_answer.currentText())
         self.session.set_profile_clue_field("japanese", self.ja_clue.currentText())
         self.session.set_profile_clue_template("japanese", self.ja_template.text())
-        self.session.set_profile_hide_target("japanese", self.ja_hide.isChecked())
+        self.session.set_profile_hide_target("japanese", False)
         self.session.set_profile_answer_field("native", self.na_answer.currentText())
         self.session.set_profile_clue_field("native", self.na_clue.currentText())
         self.session.set_profile_clue_template("native", self.na_template.text())
-        self.session.set_profile_hide_target("native", self.na_hide.isChecked())
+        self.session.set_profile_hide_target("native", False)
         self.session.set_native_max_answer_words(_combo_int(self.na_max_words))
 
     def _on_extra_return(self) -> None:

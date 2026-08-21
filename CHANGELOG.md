@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+- Removed Fill-in-the-gap clues from the interface and documentation for now.
+
 ## 0.6.0
 
 - Added optional JMdict-backed `englishWord` field backfill for Japanese → Native crosswords.
