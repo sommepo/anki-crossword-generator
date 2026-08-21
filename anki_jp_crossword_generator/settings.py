@@ -114,12 +114,12 @@ DEFAULTS: dict[str, Any] = {
     "answer_field": "",
     "clue_field": "",
     "answer_language": "japanese",
-    "hide_target_in_example": True,
+    "hide_target_in_example": False,
     "clue_template": "",
     "japanese_answer_field": "",
     "japanese_clue_field": "",
     "japanese_clue_template": "",
-    "japanese_hide_target": True,
+    "japanese_hide_target": False,
     "native_answer_field": "",
     "native_clue_field": "",
     "native_clue_template": "",
@@ -214,12 +214,12 @@ class AddonSettings:
     answer_field: str = ""
     clue_field: str = ""
     answer_language: str = "japanese"
-    hide_target_in_example: bool = True
+    hide_target_in_example: bool = False
     clue_template: str = ""
     japanese_answer_field: str = ""
     japanese_clue_field: str = ""
     japanese_clue_template: str = ""
-    japanese_hide_target: bool = True
+    japanese_hide_target: bool = False
     native_answer_field: str = ""
     native_clue_field: str = ""
     native_clue_template: str = ""
@@ -309,7 +309,9 @@ class AddonSettings:
         answer_field = _as_str(raw.get("answer_field"), "").strip()
         clue_field = _as_str(raw.get("clue_field"), "").strip()
         clue_template = _as_str(raw.get("clue_template"), "")
-        hide_target = _as_bool(raw.get("hide_target_in_example"), True)
+        # Fill-in-the-gap clues are temporarily unavailable in the UI.  Ignore
+        # old enabled settings so reopening the add-on restores normal clues.
+        hide_target = False
         japanese_answer = _as_str(raw.get("japanese_answer_field"), "").strip()
         native_answer = _as_str(raw.get("native_answer_field"), "").strip()
         japanese_clue = _as_str(raw.get("japanese_clue_field"), "").strip()
@@ -317,13 +319,13 @@ class AddonSettings:
         japanese_template = _as_str(raw.get("japanese_clue_template"), "")
         native_template = _as_str(raw.get("native_clue_template"), "")
         if "japanese_hide_target" in raw:
-            japanese_hide = _as_bool(raw.get("japanese_hide_target"), True)
+            japanese_hide = False
         else:
-            japanese_hide = hide_target if language != "native" else True
+            japanese_hide = False
         if "native_hide_target" in raw:
-            native_hide = _as_bool(raw.get("native_hide_target"), False)
+            native_hide = False
         else:
-            native_hide = hide_target if language == "native" else False
+            native_hide = False
         # Earlier builds accidentally described this control as a minimum. Treat
         # its saved value as the intended maximum when upgrading existing users.
         legacy_native_min_words = min(

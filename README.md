@@ -58,7 +58,7 @@ Choose which card states to include, then select cards at random, in listed orde
 
 Choose a clue field or combine several fields with the clue template builder. For example, `{{Meaning}}` uses one field, while `{{Meaning}}` followed by `{{English sentence}}` combines a definition with an example sentence.
 
-Fill-in-the-gap clues replace a matching answer in a sentence with a blank. Formatting from the original Anki field is retained, including bold and highlighted words. In Anki, choose how marked words appear; PDF clues use bold and underlining.
+Formatting from the original Anki field is retained, including bold and highlighted words. In Anki, choose how marked words appear; PDF clues use bold and underlining.
 
 ## Preview and generating
 

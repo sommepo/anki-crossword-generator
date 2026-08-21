@@ -6,9 +6,8 @@ Phase 5: search your collection, keep separate Japanese and Native crossword fie
 
 - **Deck** — dropdown of decks in the profile. Starts blank; nothing is assumed.
 - **Extra search** — optional Anki search (`tag::N2`, `prop:ivl>30`, …).
-- **Native → Japanese / Japanese → Native** — each has its own answer field, clue field, clue template builder, and fill-in-the-gap setting. Japanese → Native also has **Maximum answer words** (None, 1, 2, or 3), which can keep multi-word phrases out of the grid. Field lists come from note types in the selected deck.
+- **Native → Japanese / Japanese → Native** — each has its own answer field, clue field, and clue template builder. Japanese → Native also has **Maximum answer words** (None, 1, 2, or 3), which can keep multi-word phrases out of the grid. Field lists come from note types in the selected deck.
 - **Clue template builder** — assemble the clue with `{{Field}}` placeholders, or use **Insert field…** to pick them. Example: `{{Meaning}}` or `{{Expression}} — {{Meaning}}`. Blank uses the Clue field alone.
-- **Fill-in-the-gap clues** — blanks the answer (and close native-language variants) in the rendered clue, typically an example sentence. Bold or highlighted target words keep their mark around the blank.
 - **Marked words** — how bold or highlighted words from the card appear on clues: highlight, highlight and bold, bold only, or underline.
 - **Highlight** — background behind marked words: black, gold, green, pink, blue, or match the window. Default is black.
 - **Text colour** — colour of the marked word itself: red, white, black, gold, or auto (from the highlight). Default is red on black, matching a typical Anki highlighter.
