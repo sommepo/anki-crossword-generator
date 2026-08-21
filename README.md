@@ -2,13 +2,13 @@
 
 Anki Crossword Generator creates printable, newspaper-style crosswords directly from your Anki collection. It supports two directions: Japanese reading answers with native-language word or sentence clues, and native-language word answers with Japanese word or sentence clues.
 
-The add-on is built around printing, with a one-page A4 PDF and matching answer key, while also allowing puzzles to be completed and checked inside Anki. Everything runs locally; no card data is sent to an external service.
+The add-on is built around printing, with a one-page A4 PDF and matching answer key, while also allowing puzzles to be completed and checked inside Anki. 
 
-## At a glance
+## Overview
 
 Choose a deck, choose a direction, select answer and clue fields, preview the eligible cards, then generate a puzzle. Solve it in Anki, or open PDF preview to print or export it.
 
-For Japanese → Native crosswords, the optional JMdict backfill can create clean `englishWord` values from Japanese words when your notes do not already have them.
+For Japanese → Native crosswords, an optional JMdict backfill can create clean `englishWord` values from Japanese words when your notes do not already have them. For this to work, you must create the `englishWord` field on the given note type.
 
 ![1. Main configuration window](docs/screenshots/01-configuration.png)
 
