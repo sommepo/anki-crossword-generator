@@ -34,12 +34,12 @@ class JmdictBackfillDialog(QDialog):
         super().__init__(parent)
         self._session = session
         self._index = JmdictIndex()
-        self.setWindowTitle("Fill Native answers from JMdict")
+        self.setWindowTitle("Backfill Native answers from JMdict")
         self.resize(600, 410)
         root = QVBoxLayout(self)
         intro = QLabel(
             "Look up the Japanese word in JMdict and write its English gloss list into "
-            "the English word field. Dictionary data is downloaded only if you request it, "
+            "the selected Native answer field. Dictionary data is downloaded only if you request it, "
             "then used locally. Blank targets are filled; existing values are kept."
         )
         intro.setWordWrap(True)
@@ -54,7 +54,7 @@ class JmdictBackfillDialog(QDialog):
         self.common = QCheckBox("Prefer common dictionary entries")
         form.addRow("Japanese word field", self.word)
         form.addRow("Reading field", self.reading)
-        form.addRow("English word field", self.target)
+        form.addRow("Native answer field", self.target)
         form.addRow("Maximum glosses", self.maximum)
         form.addRow("", self.common)
         root.addLayout(form)
@@ -116,10 +116,10 @@ class JmdictBackfillDialog(QDialog):
     def _fill(self) -> None:
         word_field, reading_field, target_field = (self.word.text().strip(), self.reading.text().strip(), self.target.text().strip())
         if not word_field or not target_field:
-            tooltip("Choose a Japanese word field and an English word field.")
+            tooltip("Choose a Japanese word field and a Native answer field.")
             return
         if word_field == target_field:
-            tooltip("The Japanese word field and English word field must be different.")
+            tooltip("The Japanese word field and Native answer field must be different.")
             return
         if not self._index.ready and not self._load_local():
             tooltip("Download JMdict first.")

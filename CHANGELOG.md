@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.2
+
+- Made the JMdict backfill use the currently selected Native answer field instead of assuming `englishWord`.
+
 ## 0.6.1
 
 - Removed Fill-in-the-gap clues from the interface and documentation for now.
